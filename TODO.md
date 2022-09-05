@@ -9,7 +9,9 @@
 - [x] secure Dashboard route
 - [x] logout method
 - [ ] fix how errors are displayed in `Account.js`
+- [ ] refactor `Accounts.js`, `Login.js`, and `Register.js` for better reusability
 
 ## Backend
 
 - [ ] verify that private backend routes cannot be used without authentication
+- [ ] docker deployment

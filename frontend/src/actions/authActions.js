@@ -37,6 +37,10 @@ export const loginUser = userData => dispatch => {
       // Decode token to get user data
       const decoded = jwt_decode(token)
       // Set current user
+      dispatch({
+        type: GET_ERRORS,
+        payload: {}
+      })
       dispatch(setCurrentUser(decoded))
     })
     .catch(err =>
@@ -85,6 +89,10 @@ export const updateAccountInfo = userData => dispatch => {
         // Decode token to get user data
         const decoded = jwt_decode(token)
         // Set current user
+        dispatch({
+          type: GET_ERRORS,
+          payload: {}
+        })
         dispatch(updateCurrentUser(decoded))
       })
       .catch(err =>

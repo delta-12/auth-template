@@ -1,4 +1,4 @@
-import React from "react"
+import { Component } from "react"
 import { Link } from "react-router-dom"
 import classnames from "classnames"
 import PropTypes from "prop-types"
@@ -6,7 +6,7 @@ import { connect } from "react-redux"
 import { registerUser } from "../actions/authActions"
 import WithRouter from "../components/WithRouter"
 
-class Register extends React.Component {
+class Register extends Component {
 
   state = {
     email: "",

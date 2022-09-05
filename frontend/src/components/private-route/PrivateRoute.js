@@ -1,20 +1,16 @@
 import React from "react"
-import { Route, Navigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => {
-  console.log("private route")
-  return (<Route
-    {...rest}
-    render={props =>
-      auth.isAuthenticated === true ? (
-        <Component {...props} />
-      ) : (
-        <Navigate to="/login" />
-      )
-    }
-  />)
+const PrivateRoute = ({ children, auth }) => {
+  return (
+    auth.isAuthenticated === true ? (
+      children
+    ) : (
+      <Navigate to="/login" />
+    )
+  )
 }
 
 PrivateRoute.propTypes = {

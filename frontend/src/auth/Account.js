@@ -57,16 +57,16 @@ class Account extends Component {
                   (this.props.auth.updated) ? <ServerResponse color="mediumseagreen" text="Account Info Successfully Updated." /> :
                     (Object.keys(this.state.errors).length === 0) ? null : <ServerResponse color="red" text="Failed to Update Account." />
                 }
-                <div className="form-group">
+                <div className="form-group mb-3">
                   <label>Email</label>
                   <input className={classnames((errors.email !== undefined) ? "form-control is-invalid" : "form-control", { invalid: errors.email })} onChange={this.onChange} value={this.state.email} placeholder={this.props.auth.user.email} error={errors.email} id="email" type="email" />
-                  <small className="form-text text-danger">{errors.email}</small>
+                  {(errors.email) ? <><small className="form-text text-danger">{errors.email}</small><br /></> : null}
                   <label>Password</label>
                   <input className={classnames((errors.password !== undefined) ? "form-control is-invalid" : "form-control", { invalid: errors.password })} onChange={this.onChange} value={this.state.password} placeholder="Password" error={errors.password} id="password" type="password" />
-                  <small className="form-text text-danger">{errors.password}</small>
+                  {(errors.password) ? <><small className="form-text text-danger">{errors.password}</small><br /></> : null}
                   <label>Confirm Password</label>
                   <input className={classnames((errors.password2 !== undefined) ? "form-control is-invalid" : "form-control", { invalid: errors.password2 })} onChange={this.onChange} value={this.state.password2} placeholder="Confirm Password" error={errors.password2} id="password2" type="password" />
-                  <small className="form-text text-danger">{errors.password2}</small>
+                  {(errors.password2) ? <><small className="form-text text-danger">{errors.password2}</small><br /></> : null}
                 </div>
                 <button className="btn btn-success" type="submit">Update</button>
               </div>

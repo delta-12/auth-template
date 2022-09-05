@@ -40,13 +40,23 @@ export default class App extends Component {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
-            <Route exact path="/register" element={<Register />} />
-            <Route exact path="/dashboard" element={<PrivateRoute />} >
-              <Route exact path="/dashboard" element={<Dashboard />} />
-            </Route>
-            <Route exact path="/account" element={<PrivateRoute />} >
-              <Route exact path="/account" element={<Account />} />
-            </Route>
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/account"
+              element={
+                <PrivateRoute>
+                  <Account />
+                </PrivateRoute>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </Provider>

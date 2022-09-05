@@ -51,7 +51,7 @@ class Account extends Component {
           <div className="container">
             <div className="d-flex justify-content-center h-100 row align-items-center">
               <div className="col card p-3 m-3">
-                <div className="card-header mb-3">Update Delta CS Account Information</div>
+                <div className="card-header mb-3">Update Account Information</div>
                 <LoadingIndicator text="Updating Account Info..." />
                 {
                   (this.props.auth.updated) ? <ServerResponse color="mediumseagreen" text="Account Info Successfully Updated." /> :

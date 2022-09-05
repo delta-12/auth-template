@@ -15,4 +15,4 @@
 ## Backend
 
 - [ ] verify that private backend routes cannot be used without authentication
-- [ ] docker deployment
+- [x] docker deployment

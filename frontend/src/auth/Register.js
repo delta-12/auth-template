@@ -12,6 +12,7 @@ class Register extends Component {
     email: "",
     password: "",
     password2: "",
+    submit: false,
     errors: {}
   }
 
@@ -26,7 +27,7 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.navigate("/dashboard")
     }
-    if (this.state.errors !== this.props.errors) {
+    if (this.state.errors !== this.props.errors && this.state.submit) {
       this.setState({
         errors: this.props.errors
       })
@@ -47,6 +48,7 @@ class Register extends Component {
       password2: this.state.password2
     }
     this.props.registerUser(newUser, this.props.navigate)
+    this.setState({ submit: true })
   }
 
   render() {

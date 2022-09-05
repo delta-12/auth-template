@@ -10,6 +10,7 @@
 - [x] logout method
 - [ ] fix how errors are displayed in `Account.js`
 - [ ] refactor `Accounts.js`, `Login.js`, and `Register.js` for better reusability
+- [x] hide errors on initial page load
 
 ## Backend
 

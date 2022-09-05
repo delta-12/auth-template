@@ -13,11 +13,12 @@ class Account extends Component {
     email: "",
     password: "",
     password2: "",
+    submit: false,
     errors: {}
   }
 
   componentDidUpdate() {
-    if (this.state.errors !== this.props.errors) {
+    if (this.state.errors !== this.props.errors && this.state.submit) {
       this.setState({
         errors: this.props.errors
       })
@@ -39,6 +40,7 @@ class Account extends Component {
       password2: this.state.password2
     }
     this.props.updateAccountInfo(updatedInfo)
+    this.setState({ submit: true })
   }
 
   render() {

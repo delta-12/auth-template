@@ -11,6 +11,7 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
+    submit: false,
     errors: {}
   }
 
@@ -25,7 +26,7 @@ class Login extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.navigate("/dashboard")
     }
-    if (this.state.errors !== this.props.errors) {
+    if (this.state.errors !== this.props.errors && this.state.submit) {
       this.setState({
         errors: this.props.errors
       })
@@ -45,6 +46,7 @@ class Login extends Component {
       password: this.state.password
     }
     this.props.loginUser(userData) // since we handle the redirect within our component, we don't need to pass in this.props.navigate as a parameter
+    this.setState({ submit: true })
   }
 
   render() {

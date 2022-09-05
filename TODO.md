@@ -14,5 +14,5 @@
 
 ## Backend
 
-- [ ] verify that private backend routes cannot be used without authentication
+- [ ] verify that private backend routes cannot be used without authentication (currently require user id to use)
 - [x] docker deployment

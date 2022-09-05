@@ -36,7 +36,9 @@ router.post("/register", (req, res) => {
           newUser
             .save()
             .then(user => res.status(201).json(user))
-            .catch(err => console.log(err))
+            .catch(err => {
+              return res.status(500).json({ serverError: "Server failed to update.", error: err })
+            })
         })
       })
     }
@@ -95,21 +97,21 @@ router.post("/login", (req, res) => {
 })
 
 router.post("/updateAccountInfo", (req, res) => {
-  // Form validation
-  const { errors, isValid } = validateAccountInput(req.body)
-  // Check validation
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
-  // use id to check current user info and compare
-  User.findOne({ email: req.body.email }).then(user => {
+  // query db for existing user, then update user doc with save() 
+  User.findOne({ _id: req.body.id }).then(user => {
     if (user) {
-      return res.status(400).json({ email: "User with email already exists" })
-    }
-    else {
-      // query db for existing user, then update user doc with save()      
-      User.findOne({ _id: req.body.id }).then(user => {
-        if (user) {
+      // Form validation
+      const { errors, isValid } = validateAccountInput(req.body)
+      // Check validation
+      if (!isValid) {
+        return res.status(400).json(errors)
+      }
+      // use id to check current user info and compare
+      User.findOne({ email: req.body.email }).then(userEmail => {
+        if (userEmail) {
+          return res.status(400).json({ email: "User with email already exists" })
+        }
+        else {
           if (req.body.email.length > 0) {
             user.email = req.body.email
           }
@@ -157,12 +159,13 @@ router.post("/updateAccountInfo", (req, res) => {
             saveAccountInfo()
           }
         }
-        else {
-          return res.status(404).json({ account: "Account Not Found" })
-        }
       })
     }
+    else {
+      return res.status(404).json({ account: "Account Not Found" })
+    }
   })
+
 })
 
 module.exports = router
